@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="./LaTeXMathML.js"></script>
     <link rel="stylesheet" href="./main.css">
     <title>Gerador de Tabela Verdade</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="overflow-y:scroll;">
         <h1 id="title">Truth Table Generator</h1>
         <p>This tool generates truth tables for propositional logic formulas. You can enter logical operators in several different formats. For example, the propositional formula p ∧ q → ¬r could be written as p /\ q -> ~r, as p and q => not r, or as p && q -> !r. The connectives ⊤ and ⊥ can be entered as T and F.</p>
         <input id="function_input" type="text" placeholder="Digite a fórmula">
+        <table id="truthTable">
+        </table>
         <table>
             <thead>
                 <tr>
@@ -34,15 +37,53 @@
     var Module = {
       onRuntimeInitialized: function() {
         const input = document.getElementById('function_input');
+        let newTable;
         input.addEventListener('keyup', function(e){
             var key = e.which || e.keyCode;
-            if (key == 13) { // codigo da tecla enter
-                // colocas aqui a tua função a rodar
-                alert(Module.logic(this.value));
+            try{
+                newTable = JSON.parse(Module.truthTable(this.value));
+            } catch (error){
             }
+            let htmlTable = document.getElementById("truthTable")
+            htmlTable.innerHTML = ""
+            for(var k in newTable.truthTable) {
+                let newRow = htmlTable.insertRow()
+                let nameCell = newRow.insertCell()
+                if(k!="result")
+                    nameCell.innerText = k
+                else{
+                    nameCell.innerText = newTable.formula
+                }
+                for(var j in newTable.truthTable[k]){
+                    let valueCell = newRow.insertCell()
+                    valueCell.innerText = newTable.truthTable[k][j]
+                }
+            }
+            Swap()
+            let formulaRow = htmlTable.insertRow(0)
+            let formula = newRow.insertCell(0)
+            formula.innerText = newTable.formula
         });
       }
     };
+    function Swap(){
+        var t= document.getElementsByTagName('tbody')[0],
+        r= t.getElementsByTagName('tr'),
+        cols= r.length, rows= r[0].getElementsByTagName('td').length,
+        cell, next, tem, i= 0, tbod= document.createElement('tbody');
+
+        while(i<rows){
+            cell= 0;
+            tem= document.createElement('tr');
+            while(cell<cols){
+                next= r[cell++].getElementsByTagName('td')[0];
+                tem.appendChild(next);
+            }
+            tbod.appendChild(tem);
+            ++i;
+        }
+        t.parentNode.replaceChild(tbod, t);
+    }
   </script>
   <script src="latexParser.js"></script>
 </html>
