@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./main.css">
+    <title>Gerador de Tabela Verdade</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">Gerador de Tabela Verdade</h1>
+        <p>This tool generates truth tables for propositional logic formulas. You can enter logical operators in several different formats. For example, the propositional formula p ∧ q → ¬r could be written as p /\ q -> ~r, as p and q => not r, or as p && q -> !r. The connectives ⊤ and ⊥ can be entered as T and F.</p>
+        <input id="function_input" type="text" placeholder="Digite a fórmula">
+        <table>
+            <thead>
+                <tr>
+                    <th>Código Latex</th>
+                    <th>Significado</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <tr>
+                    <td>\neg</td>
+                    <td>Negação</td>
+                    <td>~A" é falsa, e vice-versa.</td>
+                </tr>
+            </tbody>
+            
+        </table>
+    </div>
+</body>
+</html>
