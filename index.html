@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 id="title">Gerador de Tabela Verdade</h1>
+        <h1 id="title">Truth Table Generator</h1>
         <p>This tool generates truth tables for propositional logic formulas. You can enter logical operators in several different formats. For example, the propositional formula p ∧ q → ¬r could be written as p /\ q -> ~r, as p and q => not r, or as p && q -> !r. The connectives ⊤ and ⊥ can be entered as T and F.</p>
         <input id="function_input" type="text" placeholder="Digite a fórmula">
         <table>
@@ -30,4 +30,19 @@
         </table>
     </div>
 </body>
+<script>
+    var Module = {
+      onRuntimeInitialized: function() {
+        const input = document.getElementById('function_input');
+        input.addEventListener('keyup', function(e){
+            var key = e.which || e.keyCode;
+            if (key == 13) { // codigo da tecla enter
+                // colocas aqui a tua função a rodar
+                alert(Module.logic(this.value));
+            }
+        });
+      }
+    };
+  </script>
+  <script src="latexParser.js"></script>
 </html>
