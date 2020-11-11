@@ -73,7 +73,7 @@
                     if(k!="result")
                         nameCell.innerText = k
                     else{
-                        nameCell.innerText = newTable.formula.replace("&&","∧").replace("||","∨")
+                        nameCell.innerText = newTable.formula.replaceAll("&&","∧").replaceAll("||","∨")
                     }
                     for(var j in newTable.truthTable[k]){
                         let valueCell = newRow.insertCell()
