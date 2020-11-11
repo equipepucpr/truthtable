@@ -16,7 +16,7 @@
             </table>
         </div>
         
-        <button id="copy_button">Copy LaTeX table to clipboard</button>
+        <button id="copy_button">Click to copy LaTeX table to clipboard</button>
         
         <div class="table_content">
             <table class="table">
@@ -58,32 +58,37 @@
     var Module = {
       onRuntimeInitialized: function() {
         const input = document.getElementById('function_input');
+        const copybutton = document.getElementById('copy_button');
+        let htmlTable = document.getElementById("truthTable")
+        copybutton.style.display = "none";
         let newTable;
         input.addEventListener('keyup', function(e){
             var key = e.which || e.keyCode;
             try{
                 newTable = JSON.parse(Module.truthTable(this.value));
+                htmlTable.innerHTML = ""
+                for(var k in newTable.truthTable) {
+                    let newRow = htmlTable.insertRow()
+                    let nameCell = newRow.insertCell()
+                    if(k!="result")
+                        nameCell.innerText = k
+                    else{
+                        nameCell.innerText = newTable.formula
+                    }
+                    for(var j in newTable.truthTable[k]){
+                        let valueCell = newRow.insertCell()
+                        valueCell.innerText = newTable.truthTable[k][j]
+                    }
+                }
+                copybutton.style.display = "block";
+                Swap();
+                
+                copybutton.onclick = function(){
+                    copyToClipboard(newTable.latexTable)
+                }
+
             } catch (error){
             }
-            let htmlTable = document.getElementById("truthTable")
-            htmlTable.innerHTML = ""
-            for(var k in newTable.truthTable) {
-                let newRow = htmlTable.insertRow()
-                let nameCell = newRow.insertCell()
-                if(k!="result")
-                    nameCell.innerText = k
-                else{
-                    nameCell.innerText = newTable.formula
-                }
-                for(var j in newTable.truthTable[k]){
-                    let valueCell = newRow.insertCell()
-                    valueCell.innerText = newTable.truthTable[k][j]
-                }
-            }
-            Swap()
-            let formulaRow = htmlTable.insertRow(0)
-            let formula = newRow.insertCell(0)
-            formula.innerText = newTable.formula
         });
       }
     };
@@ -104,6 +109,19 @@
             ++i;
         }
         t.parentNode.replaceChild(tbod, t);
+    }
+
+    function copyToClipboard(text) {
+        var dummy = document.createElement("textarea");
+        // to avoid breaking orgain page when copying more words
+        // cant copy when adding below this code
+        // dummy.style.display = 'none'
+        document.body.appendChild(dummy);
+        //Be careful if you use texarea. setAttribute('value', value), which works with "input" does not work with "textarea". – Eduard
+        dummy.value = text;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
     }
   </script>
   <script src="latexParser.js"></script>
