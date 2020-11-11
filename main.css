@@ -15,7 +15,7 @@ body {
 }
 
 .container {
-    background: url("/logo.svg");
+    background: url("raw.githubusercontent.com/luis951/truthTableWASM/main/logo.svg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: right;
