@@ -7,36 +7,56 @@
     font-family: 'Raleway', sans-serif;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+/* Track */
+::-webkit-scrollbar-track {
+background: #25282A;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555;
+}
+
 body {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #25282A;
-}
 
-.container {
-    background: url("http://raw.githubusercontent.com/luis951/truthTableWASM/main/logo.svg");
+    background-image: url("http://raw.githubusercontent.com/luis951/truthTableWASM/main/logo.svg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: right;
     background-size: 170%;
-    position: relative;
+}
+
+
+.container {
+
+    position: absolute;
+    bottom: 0px;
 
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 
-    height: 80%;
-    max-width: 90%;
-    
-    border: 6px solid #dde5ed;
-    border-radius: 10px;
-    
+    height: 100%;
+    width: 100%;
+
     font-size: 20px;
     color: #dde5ed;
     
-    margin: 10px;
     padding: 4% 10% 4% 10%;
 }
 
@@ -112,19 +132,53 @@ table, th, td {
     background-color: #25282A;
 }
 
-.table_content {
+#table_content {
+    position: fixed; /* Sit on top of the page content */
+    display: none;  /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+   
     display: flex;
     justify-content: center;
-    margin: auto;
     text-align: center;
-    border: 3px solid #dde5ed;
-    border-radius: 10px;
-    padding: 10px; 
+    
 }
 
+.table {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 80%;
+}
+
+#table_button_overlay{
+    border-radius: 30px;
+    height: 60px;
+    border: 3px solid #dde5ed;
+    margin: 25px 0 25px 0;
+    width: 40%;
+    color: #dde5ed;
+    background-color: #25282A;
+    outline: 0;
+    font-size: 18px;
+    padding: auto;
+    transition: 0s;
+}
+
+
+
 /* Tudo o que estiver abaixo do max-width será aplicado */
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     input::placeholder{
         font-size: 80%;
     }
+
 }

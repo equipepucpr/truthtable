@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./main.css">
-    <title>Gerador de Tabela Verdade</title>
+    <title>Truth Table Generator</title>
 </head>
 <body>
     <div class="container">
@@ -18,39 +18,59 @@
         
         <button id="copy_button">Click to copy LaTeX table to clipboard</button>
         
-        <div class="table_content">
+        <div id="table_content" onclick="off()">
             <table class="table">
                 <thead class="table_head">
+
                     <tr>
-                        <th>Código Latex</th>
-                        <th>Significado</th>
-                        <th>Descrição</th>
+                        <th>Symbol</th>
+                        <th>Latex Code</th>
+                        <th>Definition</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody class="table_body">
                     <tr>
-                        <td>\neg</td>
-                        <td>Negação</td>
-                        <td>A negação da proposição "A" é a proposição "~A", de maneira que se "A" é verdade então "~A" é falsa, e vice-versa.</td>
+                        <td>¬</td>
+                        <td>\lnot</td>
+                        <td>Negation</td>
+                        <td>Definition</td>
                     </tr>
                     <tr>
-                        <td>\rightarrow, \to</td>
-                        <td>Implicação</td>
-                        <td>A proposição é falsa se, e somente se, o primeiro operando é verdadeiro e o segundo operando é falso</td>
+                        <td>∧</td>
+                        <td>\land</td>
+                        <td>Conjunction</td>
+                        <td>Definition</td>
                     </tr>
                     <tr>
-                        <td>\leftrightarrow</td>
-                        <td>Bi-implicação</td>
-                        <td>A proposição é falsa se, e somente se, o primeiro operando é verdadeiro e o segundo operando é falso</td>
+                        <td>∨</td>
+                        <td>\lor</td>
+                        <td>Disjunction</td>
+                        <td>Definition</td>
                     </tr>
                     <tr>
-                        <td>\wedge, \land</td>
-                        <td>Conjunção</td>
-                        <td>A proposição é falsa se, e somente se, o primeiro operando é verdadeiro e o segundo operando é falso</td>
+                        <td>→</td>
+                        <td>\implies</td>
+                        <td>Implication</td>
+                        <td>Definition</td>
                     </tr>
+                    <tr>
+                        <td>↔</td>
+                        <td>\iff</td>
+                        <td>Bi-implication</td>
+                        <td>Definition</td>
+                    </tr>
+                    <tr>
+                        <td>⊕</td>
+                        <td>\oplus</td>
+                        <td>Exclusive or</td>
+                        <td>Definition</td>
+                    </tr>                    
                 </tbody>
             </table>
         </div>
+
+        <button onclick="on()" id="table_button_overlay">Latex definition</button>
 
     </div>
 </body>
@@ -122,6 +142,14 @@
         dummy.select();
         document.execCommand("copy");
         document.body.removeChild(dummy);
+    }
+
+    function on() {
+        document.getElementById("table_content").style.display = "block";
+    }
+
+    function off() {
+        document.getElementById("table_content").style.display = "none";
     }
   </script>
   <script src="latexParser.js"></script>
