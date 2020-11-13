@@ -112,24 +112,27 @@ table, th, td {
 
 #copy_button {
     display: none; 
+}
+
+#copy_button, #table_button_overlay {
     border-radius: 30px;
-    height: 80px;
+    min-height: 80px;
     border: 3px solid #dde5ed;
     margin: 25px 0 50px 0;
-    width: 40%;
+    min-width: 40%;
     color: #dde5ed;
     background-color: #25282A;
     outline: 0;
     font-size: 18px;
-    padding: auto;
+    padding: 5px;
     transition: 0s;
 }
 
-#copy_button:hover {
+#copy_button:hover, #table_button_overlay:hover {
     background-color: #9D2235;
 }
 
-#copy_button:active {
+#copy_button:active, #table_button_overlay:active {
     background-color: #25282A;
 }
 
@@ -167,20 +170,6 @@ table, th, td {
     left: 50%;
     transform: translate(-50%,-50%);
     max-width: 80%;
-}
-
-#table_button_overlay{
-    border-radius: 30px;
-    height: 60px;
-    border: 3px solid #dde5ed;
-    margin: 25px 0 25px 0;
-    width: 40%;
-    color: #dde5ed;
-    background-color: #25282A;
-    outline: 0;
-    font-size: 18px;
-    padding: auto;
-    transition: 0s;
 }
 
 
