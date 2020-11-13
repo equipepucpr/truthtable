@@ -111,6 +111,7 @@ table, th, td {
 }
 
 #copy_button {
+    display: none; 
     border-radius: 30px;
     height: 80px;
     border: 3px solid #dde5ed;
@@ -132,6 +133,18 @@ table, th, td {
     background-color: #25282A;
 }
 
+#table_content::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    box-shadow: inset 0 0 0 3000px rgba(0,0,0,0.95);
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+}
+
 #table_content {
     position: fixed; /* Sit on top of the page content */
     display: none;  /* Hidden by default */
@@ -141,11 +154,8 @@ table, th, td {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0); /* Black background with opacity */
     z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
-   
-    display: flex;
     justify-content: center;
     text-align: center;
     
