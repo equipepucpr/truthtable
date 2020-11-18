@@ -171,9 +171,6 @@ table, th, td {
     max-width: 80%;
 }
 
-
-
-/* Tudo o que estiver abaixo do max-width será aplicado */
 @media (max-width: 700px) {
     input::placeholder{
         font-size: 80%;
