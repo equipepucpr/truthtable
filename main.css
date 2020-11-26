@@ -177,3 +177,15 @@ table, th, td {
     }
 
 }
+
+footer {
+    position: fixed;
+    background-color: #dde5ed;
+    margin-top: 15px;
+    padding: 5px;
+    height: 50; 
+    width: 100%;
+    text-align: left;
+    font-size: 0.8em;
+    bottom: 0;
+  }
