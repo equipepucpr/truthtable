@@ -33,7 +33,7 @@ body {
     justify-content: center;
     background-color: #25282A;
 
-    background-image: url("https://raw.githubusercontent.com/luis951/truthTableWASM/main/logo.svg");
+    background-image: url("logo.svg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: right;
